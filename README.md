@@ -22,7 +22,7 @@ which has pagination or to add a new movie build with [Create React App](https:/
 ## Quick Start
 
 ```shell
-$ git clone
+$ git clone https://github.com/anushayalakala/react-movie-list.git
 $ cd react-movie-list
 $ npm install
 $ npm start
