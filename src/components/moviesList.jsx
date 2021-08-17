@@ -3,11 +3,13 @@ import * as fakeGenreServiceAPI from "../services/fakeMovieService";
 import "../../node_modules/font-awesome/css/font-awesome.min.css";
 import * as fakeGenreserise from "../services/fakeGenreService";
 import Like from "../shared/likes";
+import * as fakeMovieService from "../services/fakeMovieService";
 import Pagination from "../shared/pagination";
 import paginate from "../utils/paginate";
 import ListGroup from "../shared/listGroup";
 import genreList from "../utils/genre";
 import { Link } from "react-router-dom";
+import SearchBox from "../components/search";
 
 class MoviesList extends Component {
   constructor() {
@@ -38,6 +40,21 @@ class MoviesList extends Component {
     movie.liked = !movies[index].liked;
     movies[index] = movie;
     this.setState({ movies });
+  };
+  handleChange = e => {
+    let searchMovie = e.currentTarget.value;
+    const movies = fakeMovieService.getMovies();
+    console.log("anusha");
+    console.log(searchMovie);
+    const filteredMovies = movies.filter(movie => {
+      console.log(movie);
+      return movie.title.toUpperCase().startsWith(searchMovie.toUpperCase());
+    });
+    this.setState({
+      movies: filteredMovies,
+      currentGenre: "All Genre",
+      currentPage: 1
+    });
   };
   handlePagination = page => {
     this.setState({
@@ -122,6 +139,7 @@ class MoviesList extends Component {
               Showing {currentGenre === "All Genre" ? count : pageMovies.length}{" "}
               movies in the database
             </h5>
+            <SearchBox onChange={this.handleChange} />
             <table className="table">
               <thead>{movieHeaders}</thead>
               <tbody>{moviData}</tbody>
