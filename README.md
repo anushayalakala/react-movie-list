@@ -7,6 +7,7 @@
 - Pagination
 - delete a movie
 - liked/unliked a movie
+- Search a movie
 
 which has pagination or to add a new movie build with [Create React App](https://github.com/facebookincubator/create-react-app),[React]
 
@@ -29,7 +30,7 @@ $ npm start
 
 ## Explanation
 
-A simple movie list app to to show movies based on the selected genre,create a new movie, delete existing movie and etc..
+A simple movie list app to to show movies based on the selected genre,search a movie,create a new movie, delete existing movie and etc..
 
 ## NPM Commands
 
